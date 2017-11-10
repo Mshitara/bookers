@@ -1,0 +1,5 @@
+<span><h3> Title:</h3> <%= @book.title %></span>
+<span><h3> Body:</h3> <%= @book.memo %></span>
+<span>
+	<%= link_to "edit", edit_path(@book.id)%> | <%= link_to "back", index_path(@index)%>
+</span>
