@@ -9,8 +9,8 @@ class BookersController < ApplicationController
 		@book = Book.new
 	end
 	def create
-		book = Book.new(bookers_params)
-		book.save
+		@book = Book.new(bookers_params)
+		@book.save
 		redirect_to '/index'
 	end
 	def show
@@ -21,6 +21,13 @@ class BookersController < ApplicationController
 	end
 	def destroy
 		@book = Book.find(params[:id])
+		@book.destroy
+		redirect_to index_path, notice: 'Book was successfully deleted'
+	end
+	def update
+		@book = Book.find(params[:id])
+		@book.update(bookers_params)
+		redirect_to show_path(@book.id), notice: 'Book was successfully updated'
 	end
 
 	private

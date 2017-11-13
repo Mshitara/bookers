@@ -1,0 +1,11 @@
+<h2>Edit</h2>
+
+<%= form_for @book,:url => {:action => :update} do |f| %>
+
+	<h3> Title</h3>
+	<%= f.text_field :title %>
+	<h3> Note</h3>
+	<%= f.text_area :memo %>
+	<%= f.submit "update" %>
+
+<% end %>

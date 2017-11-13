@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   get '/bookers_top' => 'bookers#bookers_top'
   #Sget '/bookers/new'
   # get '/index' => 'bookers#new'
-  get '/index' => 'bookers#index'
+  get '/index' => 'bookers#index', as: 'index'
   post '/index' => 'bookers#create'
   get '/index/:id' => 'bookers#show', as: 'show'
   get '/index/:id/edit' => 'bookers#edit', as: 'edit'
-  delete '/index' => 'bookers#destroy', as: 'destroy'
+  patch '/index/:id/edit' => 'bookers#update', as: 'update'
+  delete '/index/:id' => 'bookers#destroy', as: 'destroy'
 end
