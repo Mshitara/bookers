@@ -9,8 +9,9 @@
 			<%= render 'layouts/header'%>
 			<div class="main">
 				<div class="col-md-3">
+					<%= render 'shared/error_msg'%>
 					<h1> Sign up</h1>
-				    <%= form_for(@user, url: 'signup') do |f| %>
+				    <%= form_for(@user, url: signup_path) do |f| %>
 				      <%= f.label :name %>
 				      <%= f.text_field :name, class: "form-control"%>
 

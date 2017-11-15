@@ -2,10 +2,16 @@
 	<div class="container">
 		<a href="#" class="navbar-brand"><span class="fa fa-book" ></span>Bookers</a>
   		<ul class="nav navbar-nav navbar-right">
-	      <li><a href="">Link1</a></li>
-	      <li><a href="">Link2</a></li>
-	      <li><a href="">Link3</a></li>
-	      <li><a href="">Link3</a></li>
+	      <li><%= link_to "Home", '', class: "fa fa-home" %></li>
+	      <% if logged_in?%>
+		      <li><%= link_to "User", '', class: "" %></li>
+		      <li><%= link_to "Book", '', class: "" %></li>
+		      <li><%= link_to "Sign out", logout_path, class: "", method: :delete %></li>
+		  <% else %>
+		  	  <li><%= link_to "about", '', class: "" %></li>
+		  	  <li><%= link_to "Sign up", '', class: "" %></li>
+		  	  <li><%= link_to "Sign in", '', class: ""%></li>
+		  <% end %>
 	   </ul>
 	</div>
 </header>

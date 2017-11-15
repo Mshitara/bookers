@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<%= render 'layouts/header'%>
+			<div class="main">
+				<div class="col-md-3">
+					<h1> Sign in</h1>
+					<%= form_for(:session, url: login_path) do |f| %>
+
+	      				<%= f.label :email %>
+	      				<%= f.email_field :email, class: 'form-control' %>
+
+	      				<%= f.label :password %>
+	      				<%= f.password_field :password, class: 'form-control' %>
+
+					    <%= f.submit "sign in", class: "btn btn-info form-control" %>
+			    	<% end %>
+				    <p><%= link_to "sign up", signup_path %></p>
+		  		</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
