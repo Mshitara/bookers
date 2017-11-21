@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-  resources :users, only: [:show, :edit]
+  resources :users, only: [:show, :edit, :index]
   patch '/users/:id/edit', to: 'users#update'
   post '/users/:id', to: 'books#create'
-  resources :books, only: [:show, :edit, :destroy]
-  patch '/books/:id/', to: 'books#update'
+  post '/books', to: 'books#create'
+  post '/users', to: 'books#create'
+  resources :books, only: [:show, :edit, :destroy, :index]
+  patch '/books/:id', to: 'books#update'
 end

@@ -1,4 +1,7 @@
 class BooksController < ApplicationController
+  before_action :logged_in_user, only:[:edit, :update]
+  before_action :correct_user, only:[:edit, :update]
+
 	def new
 	end
 
@@ -6,11 +9,12 @@ class BooksController < ApplicationController
 		@book = Book.new(book_params)
 		@book.user_id = session[:user_id]
 		@book.save
-		redirect_to user_path
+		redirect_to user_path(session[:user_id])
 	end
 
 	def show
 		@book = Book.find(params[:id])
+		@book_show_form = Book.new
 		#@book.user_id = session[:user_id]
 		#@books = Book.where(user_id: session[:user_id])
 		@user = User.find(session[:user_id])
@@ -30,6 +34,13 @@ class BooksController < ApplicationController
 		@book = Book.find(params[:id])
 		@book.destroy
 		redirect_to user_path(session[:user_id]), notice: "You did it!"
+	end
+
+	def index
+		@book_index = Book.all
+		@book = Book.new
+		@user = User.find(session[:user_id])
+
 	end
 
 	private
