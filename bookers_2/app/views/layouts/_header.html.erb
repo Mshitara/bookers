@@ -1,16 +1,19 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
 	<div class="container">
-		<a href="#" class="navbar-brand"><span class="fa fa-book" ></span>Bookers</a>
+		<ul class="nav navbar-nav navbar-left">
+			<li> <%= link_to "Bookers", bookers2top_path, class: "fa fa-book" %></li>
+		</ul>
   		<ul class="nav navbar-nav navbar-right">
-	      <li><%= link_to "Home", '', class: "fa fa-home" %></li>
 	      <% if logged_in?%>
-		      <li><%= link_to "User", '', class: "" %></li>
-		      <li><%= link_to "Book", '', class: "" %></li>
-		      <li><%= link_to "Sign out", logout_path, class: "", method: :delete %></li>
+	      	  <li> <%= link_to "Home", user_path(session[:user_id]), class: "fa fa-home" %></li>
+		      <li> <%= link_to "Users", '', class: "fa fa-user" %></li>
+		      <li> <%= link_to "Books", '', class: "fa fa-book" %></li>
+		      <li> <%= link_to "Sign out", logout_path, class: "fa fa-sign-out", method: :delete %></li>
 		  <% else %>
-		  	  <li><%= link_to "about", '', class: "" %></li>
-		  	  <li><%= link_to "Sign up", '', class: "" %></li>
-		  	  <li><%= link_to "Sign in", '', class: ""%></li>
+	      	  <li> <%= link_to "Home", login_path, class: "fa fa-home" %></li>
+		  	  <li> <%= link_to "about", home_about_path, class: "fa fa-chain" %></li>
+		  	  <li> <%= link_to "Sign up", signup_path, class: "fa fa-user-plus" %></li>
+		  	  <li> <%= link_to "Sign in", login_path, class: "fa fa-sign-in" %></li>
 		  <% end %>
 	   </ul>
 	</div>

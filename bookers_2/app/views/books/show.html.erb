@@ -40,23 +40,15 @@
 				<% end %>
 			</div>
 			<div class="col-xs-9">
-				<h2> Books</h2>
+				<h2> Book Detail</h2>
 				<table class="table">
-					<thead>
-						<tr>
-							<th> </th>
-							<th> Title</th>
-							<th> Opinion</th>
-					</thead>
-					<% @books.each do |e| %>
-						<tbody>
-							<tr>
-								<td> <%= link_to  user_path(@user.id) do %> <%= attachment_image_tag @user, :profile_image,fallback: "no_image.jpg", class: "no_image_book" %><% end %></td>
-								<td> <%= link_to  book_path(e.id) do %> <%= e.title %><% end %></td>
-								<td> <%= e.opinion %></td>
-							</tr>
-						</tbody>
-					<% end %>
+					<tbody>
+						<td> <%= link_to user_path(@user.id) do %> <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", class: "no_image_book"%><% end %></td>
+						<td> <%= @book.title %></td>
+						<td> <%= @book.opinion %></td>
+						<td> <%= link_to "edit", edit_book_path %></td>
+						<td> <%= link_to "destroy", book_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn-sm btn-danger" %></td>
+					</tbody>
 				</table>
 			</div>
 		</div>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div class="container">
+		<%= render 'layouts/header'%>
+		<div class="row main">
+			<div class="col-xs-3">
+				<h2> User info</h2>
+				<%= form_for @user, url: edit_user_path do |f| %>
+					<h4> Name</h4>
+					<%= f.text_field :name %>
+
+					<h4> Introduction</h4>
+					<%= f.text_area :introduction %>
+
+					<h4> Image</h4>
+					<%= f.attachment_field :profile_image %>
+
+					<%= f.submit "update profile", class: "btn btn-info form-control" %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
