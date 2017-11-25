@@ -47,4 +47,15 @@ class BooksController < ApplicationController
 	def book_params
 		params.require(:book).permit(:title, :opinion, :user_id, :user_profile_image)
 	end
+
+	def logged_in_user
+      unless logged_in?
+      	redirect_to login_path
+  	  end
+    end
+
+    def correct_user
+      @user = User.find(session[:user_id])
+      redirect_to (login_path) unless current_user?(@user)
+    end
 end

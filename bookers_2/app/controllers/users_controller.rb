@@ -7,8 +7,10 @@ class UsersController < ApplicationController
   end
 
   def show
-  	@user = User.find(params[:id])
-  	@book = Book.new
+  	#@user = User.find(params[:id])
+  	@user = current_user
+    @user_image = User.find(params[:id])
+    @book = Book.new
   	@books = Book.where(user_id: User.find(params[:id]))
   end
 
@@ -45,17 +47,17 @@ class UsersController < ApplicationController
     end
 
     def book_params
-  	params.require(:book).permit(:title, :opinion, :user_id, :user_profile_image)
+  	  params.require(:book).permit(:title, :opinion, :user_id, :user_profile_image)
     end
 
     def logged_in_user
       unless logged_in?
-      redirect_to login_path
-    end
+        redirect_to login_path
+      end
     end
 
     def correct_user
-      @user = User.find(params[:id])
+      @user = User.find(session[:user_id])
       redirect_to (login_path) unless current_user?(@user)
     end
 end
